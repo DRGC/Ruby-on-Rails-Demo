@@ -1,0 +1,96 @@
+<%gameArray = ["Half-life 3", "Kingdom Hearts 3", "Overwatch"]%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Demo</title>
+
+  <!-- Bootstrap Core CSS -->
+  <%= stylesheet_link_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'html5shiv', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'respond.min', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'bootstrap.js', 'data-turbolinks-track' => true %>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      padding-top: 70px;
+      /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+  </style>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Ruby on Rails</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to('Home', {:controller => "index", :action => 'index'}) %>
+        </li>
+        <li>
+          <%= link_to('Demo', {:controller => "demo", :action => 'demo'}) %>
+        </li>
+        <li>
+          <%= link_to('Parameters', {:controller => "demo", :action => 'demo', :page => 5, :id => 20}) %>
+        </li>
+        <li>
+          <%= link_to('Redirect', {:controller => "redirect", :action => 'redirect'}) %>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1>Demo</h1>
+      <p class="lead">Controller Demo</p>
+      <ul class="list-unstyled">
+        <li><h1>Dynamic Content</h1></li>
+        <li><h2>Inline Ruby</h2></li>
+        <li><h3><%=gameArray[rand(gameArray.length)]%></h3></li>
+        <li><h2>External Ruby</h2></li>
+        <li><h3><%@helloArray.each do |n| %><%= n %><% end %></h3></li>
+        <li><h3><%=@helloArray[rand(@helloArray.length)]%></h3></li>
+        <li><h2>Parameters</h2></li>
+        <li><h3>ID: <%= @id %> Page: <%= @page%></h3></li>
+        <li><%= params.inspect %></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery Version 1.11.1 -->
+<%= yield %>
+</body>
+</html>
+
